@@ -52,6 +52,6 @@ POLICY
 }
 
 resource "aws_s3_bucket_metric" "dq_aws_config_bucket_logging" {
-  bucket = aws_s3_bucket.dq_aws_config_bucket.id
+  bucket = "arn:aws:s3:::dq-logs-archive"
   name   = "dq_aws_config_metric"
 }
