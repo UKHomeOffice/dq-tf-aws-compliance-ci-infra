@@ -14,16 +14,16 @@ resource "aws_s3_bucket" "dq_aws_config_bucket" {
     }
   }
 
-  logging {
-    target_bucket = "arn:aws:s3:::dq-logs-archive/*"
-    target_prefix = "dq_aws_config/"
-  }
+  # logging {
+  #   target_bucket = "arn:aws:s3:::dq-logs-archive/*"
+  #   target_prefix = "dq_aws_config/"
+  # }
 
   tags = {
     Name = "s3-dq-aws-config-ci"
   }
 }
-# 
+#
 # resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
 #   bucket = aws_s3_bucket.dq_aws_config_bucket.id
 #
