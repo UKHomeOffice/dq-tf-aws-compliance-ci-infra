@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "dq_aws_config_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
-  bucket = aws_s3_bucket.dq_aws_config_bucket
+  bucket = aws_s3_bucket.dq_aws_config_bucket.id
 
   policy = <<POLICY
 {
@@ -50,6 +50,6 @@ POLICY
 }
 
 resource "aws_s3_bucket_metric" "dq_aws_config_bucket_logging" {
-  bucket = aws_s3_bucket.dq_aws_config_bucket
+  bucket = aws_s3_bucket.dq_aws_config_bucket.id
   name   = "dq_aws_config_metric"
 }
