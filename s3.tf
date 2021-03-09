@@ -47,6 +47,8 @@ resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
 }
 POLICY
 
+  depends_on = [aws_s3_bucket.dq_aws_config_bucket]
+
 }
 
 resource "aws_s3_bucket_metric" "dq_aws_config_bucket_logging" {

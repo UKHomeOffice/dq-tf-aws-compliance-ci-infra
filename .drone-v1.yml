@@ -92,34 +92,29 @@ steps:
   when:
     event:
     - push
-#
-# - name: apply-ci
-#   pull: always
-#   image: quay.io/ukhomeofficedigital/dq-docker-terragrunt:v0.23.18
-#   commands:
-#   - export TF_VAR_ENV_ACCT_ID=$${CI_ACC_ID}
-#   - export TF_VAR_ENV_ACCT_KEY=$${CI_ACC_KEY}
-#   - terragrunt apply -auto-approve -parallelism=50 plan
-#   environment:
-#     AWS_ACCESS_KEY_ID:
-#       from_secret: AWS_ACCESS_KEY_ID
-#     AWS_SECRET_ACCESS_KEY:
-#       from_secret: AWS_SECRET_ACCESS_KEY
-#     CI_ACC_ID:
-#       from_secret: CI_ACC_ID
-#     CI_ACC_KEY:
-#       from_secret: CI_ACC_KEY
-#     TF_VAR_namespace: ci
-#     TF_VAR_naming_suffix: apps-ci-dq
-#   when:
-#     branch:
-#       include:
-#       - main
-#       exclude:
-#       - plan/*
-#     event:
-#     - push
-#
+
+- name: apply-ci
+  pull: always
+  image: quay.io/ukhomeofficedigital/dq-docker-terragrunt:v0.23.18
+  commands:
+  - export TF_VAR_ENV_ACCT_ID=$${CI_ACC_ID}
+  - export TF_VAR_ENV_ACCT_KEY=$${CI_ACC_KEY}
+  - terragrunt apply -auto-approve -parallelism=50 plan
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: AWS_SECRET_ACCESS_KEY
+    CI_ACC_ID:
+      from_secret: CI_ACC_ID
+    CI_ACC_KEY:
+      from_secret: CI_ACC_KEY
+    TF_VAR_namespace: ci
+    TF_VAR_naming_suffix: apps-ci-dq
+  when:
+    event:
+    - push
+
 - name: sonar-scanner
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/sonar-scanner:v3.0.3
