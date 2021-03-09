@@ -35,10 +35,10 @@ resource "aws_s3_bucket" "dq_aws_config_bucket" {
     }
   }
 
-  logging {
-    target_bucket = aws_s3_bucket.dq_log_archive_bucket.id
-    target_prefix = "dq_aws_config/"
-  }
+  # logging {
+  #   target_bucket = aws_s3_bucket.dq_log_archive_bucket.id
+  #   target_prefix = "dq_aws_config/"
+  # }
 
   tags = {
     Name = "s3-dq-aws-config-ci"
