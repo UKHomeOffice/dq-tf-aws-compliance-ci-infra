@@ -23,35 +23,35 @@ resource "aws_s3_bucket" "dq_aws_config_bucket" {
     Name = "s3-dq-aws-config-ci"
   }
 }
-
-resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
-  bucket = aws_s3_bucket.dq_aws_config_bucket.id
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "HTTP",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "*",
-      "Resource": "arn:aws:s3:::dq-logs-archive/*",
-      "Condition": {
-        "Bool": {
-          "aws:SecureTransport": "false"
-        }
-      }
-    }
-  ]
-}
-POLICY
-
-  depends_on = [aws_s3_bucket.dq_aws_config_bucket]
-
-}
-
-resource "aws_s3_bucket_metric" "dq_aws_config_bucket_logging" {
-  bucket = aws_s3_bucket.dq_aws_config_bucket.bucket
-  name   = "dq_aws_config_metric"
-}
+# 
+# resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
+#   bucket = aws_s3_bucket.dq_aws_config_bucket.id
+#
+#   policy = <<POLICY
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Sid": "HTTP",
+#       "Effect": "Deny",
+#       "Principal": "*",
+#       "Action": "*",
+#       "Resource": "arn:aws:s3:::dq-logs-archive/*",
+#       "Condition": {
+#         "Bool": {
+#           "aws:SecureTransport": "false"
+#         }
+#       }
+#     }
+#   ]
+# }
+# POLICY
+#
+#   depends_on = [aws_s3_bucket.dq_aws_config_bucket]
+#
+# }
+#
+# resource "aws_s3_bucket_metric" "dq_aws_config_bucket_logging" {
+#   bucket = aws_s3_bucket.dq_aws_config_bucket.bucket
+#   name   = "dq_aws_config_metric"
+# }
