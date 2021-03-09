@@ -90,9 +90,6 @@ steps:
     TF_VAR_namespace: ci
     TF_VAR_naming_suffix: apps-ci-dq
   when:
-    branch:
-    - main
-    - plan/*
     event:
     - push
 #
