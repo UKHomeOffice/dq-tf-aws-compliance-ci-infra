@@ -1,3 +1,24 @@
+resource "aws_s3_bucket" "dq_log_archive_bucket" {
+  bucket = "s3-dq-log-archive-ci"
+  acl    = "private"
+
+  versioning {
+    enabled = true
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+
+  tags = {
+    Name = "s3-dq-log-archive-ci"
+  }
+}
+
 resource "aws_s3_bucket" "dq_aws_config_bucket" {
   bucket = "s3-dq-aws-config-ci"
   acl    = "private"
@@ -14,10 +35,10 @@ resource "aws_s3_bucket" "dq_aws_config_bucket" {
     }
   }
 
-  logging {
-    target_bucket = "arn:aws:s3:::dq-logs-archive/*"
-    target_prefix = "dq_aws_config/"
-  }
+  # logging {
+  #   target_bucket = aws_s3_bucket.dq_log_archive_bucket.id
+  #   target_prefix = "dq_aws_config/"
+  # }
 
   tags = {
     Name = "s3-dq-aws-config-ci"
