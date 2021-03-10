@@ -5,6 +5,12 @@ provider "aws" {
   secret_key = var.ENV_ACCT_KEY
 }
 
+variable "ENV_ACCT_ID" {
+}
+
+variable "ENV_ACCT_KEY" {
+}
+
 #log archive bucket
 resource "aws_s3_bucket" "dq_log_archive_bucket" {
   provider = aws.ENV_ACCT
