@@ -104,15 +104,7 @@ resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
           "aws:SecureTransport": "false"
         }
       }
-    },
-    {
-      "Sid": "AWSConfigBucketPermissionsCheck",
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-         "config.amazonaws.com"
-        ]
-      },
+    }
   ]
 }
 POLICY
