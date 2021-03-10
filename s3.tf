@@ -1,3 +1,10 @@
+provider "aws" {
+  alias      = "ENV_ACCT"
+  region     = "eu-west-2"
+  access_key = var.ENV_ACCT_ID
+  secret_key = var.ENV_ACCT_KEY
+}
+
 #log archive bucket
 resource "aws_s3_bucket" "dq_log_archive_bucket" {
   provider = aws.ENV_ACCT
