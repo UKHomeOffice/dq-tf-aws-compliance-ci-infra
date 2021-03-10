@@ -2,7 +2,6 @@
 resource "aws_s3_bucket" "dq_log_archive_bucket" {
   bucket = "s3-dq-log-archive-ci"
   acl    = "private"
-  region = "eu-west-2"
 
   server_side_encryption_configuration {
     rule {
