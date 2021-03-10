@@ -98,7 +98,7 @@ resource "aws_s3_bucket_policy" "dq_aws_config_bucket_policy" {
       "Effect": "Deny",
       "Principal": "*",
       "Action": "*",
-      "Resource": "arn:aws:s3:::s3-dq-log-archive-ci/*",
+      "Resource": "arn:aws:s3:::s3-dq-aws-config-ci/*",
       "Condition": {
         "Bool": {
           "aws:SecureTransport": "false"
