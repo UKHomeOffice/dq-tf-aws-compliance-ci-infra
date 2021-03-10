@@ -15,7 +15,7 @@ variable "ENV_ACCT_KEY" {
 resource "aws_s3_bucket" "dq_log_archive_bucket" {
   provider = aws.ENV_ACCT
   bucket   = "s3-dq-log-archive-ci"
-  acl      = "private"
+  acl      = "log-delivery-write"
 
   server_side_encryption_configuration {
     rule {
